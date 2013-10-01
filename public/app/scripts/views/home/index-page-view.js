@@ -16,7 +16,7 @@ define(['talent'
 		template: jst['home/index-page']
 		,className: 'home-page-container'
 		,initialize: function() {
-			talent.Context.setPageTitle('Page Title: Home');
+			
 			window.col = this.collection = new BugDailyLogCollection;
 		}
 		,regions: {
@@ -34,9 +34,9 @@ define(['talent'
 			this.ui.start.html('button clicked!');
 		}
 		,onRender: function() {
-			this.collection.fetch().done(function(resp) {
-				console.log(resp);
-			})
+			// this.collection.fetch().done(function(resp) {
+			// 	console.log(resp);
+			// })
 		}
 		,onShow: function() {
 

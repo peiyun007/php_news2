@@ -1,4 +1,4 @@
-define(['talent','templates/common', 'views/plugins/component/bs-tab/bs-tab'], function(talent, jst, BSTab) {
+define(['talent','templates/common'], function(talent, jst) {
 	/**
 	* Header view class
 	* @author nobody
@@ -11,13 +11,13 @@ define(['talent','templates/common', 'views/plugins/component/bs-tab/bs-tab'], f
 		template: jst['common/page-regions/header'],
 		onShow : function() {
 		
-			var bsTab = new BSTab({
-				el : this.$el.find('.navbar-nav')
-			})
-			talent.app.request('history:getFragments').done(function(fragments){
-				var topChannel = fragments[0];
-				bsTab.setDefault(fragments[0]);
-			});
+			// var bsTab = new BSTab({
+			// 	el : this.$el.find('.navbar-nav')
+			// })
+			// talent.app.request('history:getFragments').done(function(fragments){
+			// 	var topChannel = fragments[0];
+			// 	bsTab.setDefault(fragments[0]);
+			// });
 
 		}
 	});

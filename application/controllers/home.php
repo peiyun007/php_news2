@@ -14,6 +14,14 @@ class Home extends CI_Controller
 	}
 
 	/* 首页  */
+
+	function index()
+	{
+		$data['title'] = 'Talent Index';
+		$data['pageId'] = 'home';
+		$this->load->view('master',$data);
+	}
+	/*
 	function index()
 	{
 		$data['category'] = $this->Mhome->get_category();
@@ -28,6 +36,8 @@ class Home extends CI_Controller
 		$this->load->view('footer');
 	}
 
+
+	*/
 	/* 各分类页面  */
 	function category()
 	{

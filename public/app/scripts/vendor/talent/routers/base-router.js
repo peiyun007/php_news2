@@ -53,13 +53,13 @@ define(['underscore', 'jquery', 'backbone', 'vendor/talent/app'],
 		getPageViewPath: function(isAllInOneFilePath) {
 			var fragments = this.getFragments();
 			var pageViewPath = ['views'];
-			if(isAllInOneFilePath){
-				pageViewPath = pageViewPath.concat(fragments[0]);
-				pageViewPath.push('all-in-one');
-			}else{
+			// if(isAllInOneFilePath){
+			// 	pageViewPath = pageViewPath.concat(fragments[0]);
+			// 	pageViewPath.push('all-in-one');
+			// }else{
 				pageViewPath = pageViewPath.concat(fragments);
 				pageViewPath.push('index-page-view');
-			}
+			// }
 			return pageViewPath.join('/');
 		},
 		/**
