@@ -1,0 +1,11 @@
+<div class="filter_table_head">还可以保存<%= length %>个搜索器
+	<a class="filter_table_close"  href="javascript:void(0)">&times;</a>
+</div>
+<ul>
+	<% _.each(data, function(value, key){ %>
+		<li data-id=<%= value.id %>>
+			<span  class="table_item"><%= value.allData %></span>
+			<a class="table_item_delete" href="javascript:void(0)" data-handler="delete">&times;</a>
+		</li>
+	<%	}) %>
+</ul>
