@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title><?php echo $title; ?></title>
 	<!--RepoVersion:1018-->
-	<style type="text/css" link="public/app/styles/css/all.css"></style>
+	<link rel="stylesheet" type="text/css" href="http://www.myweb.com/styles/css/all.css"/>
 	<!--hotfix css start-->
 	<!--hotfix css end-->
 	<script>
@@ -17,14 +17,15 @@
 	</script>
   </head>
   <body>
-	<div id="bs_layout_container" class="container">
+	<div id="bs_layout_container">
 
 	</div>
 
 
 	<script>
 
-		BSGlobal.staticPath='public/app';
+		//BSGlobal.staticPath='public/app';
+		BSGlobal.staticPath='http://www.myweb.com';
 		BSGlobal.entryPageId = '<?php echo $pageId; ?>';
 	
 		BSGlobal.loginUserInfo = {};
@@ -33,7 +34,7 @@
 		BSGlobal.apiPath = 'http://webapi.bs-ux.com';
 		BSGlobal.webPath = 'bs-ux.com';
 	</script>
-	<script src="public/app/scripts/vendor/components/requirejs/index.js" data-main="main"></script>
+	<script src="http://www.myweb.com/scripts/vendor/components/requirejs/index.js" data-main="main"></script>
 
 	<script type="text/javascript">			
 		// BSGlobal.staticPath = '';
@@ -43,6 +44,11 @@
 				'*': {
 				//top channels start
 				"views/home/index-page-view":"views/home/index-page-view",
+				"views/community_wiki/index-page-view":"views/community_wiki/index-page-view",
+				"views/enterprise_wiki/index-page-view":"views/enterprise_wiki/index-page-view",
+				"views/task/index-page-view":"views/task/index-page-view",
+				"views/activity/index-page-view":"views/activity/index-page-view",
+				"views/extend/index-page-view":"views/extend/index-page-view"
 				//top channels end
 				}
 			}
