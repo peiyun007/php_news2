@@ -79,6 +79,110 @@ define(['talent'], function(talent) {
 			'</div>'].join("");
 			return html;
 		}
+		/**
+		*获取 附件 类型
+		*@return
+		*/
+		,getAttachmentType:function (argument) {
+			return {
+				"image":['jpg','png','gif','jpeg','JPG','PNG','GIF','JPEG'],
+				"file":['rar','zip','exe','pdf','txt','doc','docx','ppt','pptx','XLS','XLSX','RAR','ZIP','EXE','PDF','TXT','DOC','DOCX','PPT','PPTX','XLS','XLSX'],
+				"music":['mp3','wma','wav','flac','ape','ogg','aac','m4a','MP3','WMA','WAV','FLAC','APE','OGG','AAC','M4A'],
+				"video":['mp4','mkv','rm','rmvb','avi','3gp','flv','wmv','asf','mpeg','mpg','mov','ts','m4v']
+			}
+		}
+		/**
+		*没有数据时，初始化template
+		*@return
+		*/
+		,getEmptyTemplate:function(html){
+			if(!html)return;
+			var leng = html.replace(/<[^>].*?>/g,"").replace(/[&nbsp;]/g,'').length;
+			var className = 'content_emptyinit'
+			if(leng > 24){
+				className = 'small_content_emptyinit'
+			}
+			var HTML = [
+				'<div class="_tt_common_emptyinit">',
+					'<div class="'+className+'">',
+						html,
+					'</div>',
+				'</div>'
+			].join('');
+			return HTML;
+		}
+		,setAlertTemplate : function(res, dom) {
+			var deferred = new $.Deferred();
+			var $dom = $(dom);
+			var res = res || {};
+			var className = res.code == 200 ? 'alert alert-block alert-success' : 'alert alert-error';
+			var message =  res.code == 200 ? '成功信息' : '失败信息';
+			var HTML = [
+				'<div class="' + className + '">',
+				'	<a class="close" data-dismiss="alert">×</a>',
+				'	<h4 class="alert-heading">'+ message +'</h4>' + res.msg,
+				'</div>'
+			].join("");
+			$dom.empty().show().append(HTML);
+			var settimeout  = setTimeout(function() {
+				$dom.hide();
+				deferred.resolve();
+			}, 1000);
+			$dom.off('click.close');
+			$dom.on('click.close', '.close', function(){
+				$dom.hide();
+				clearTimeout(settimeout);
+				deferred.resolve();
+			})
+			return deferred.promise();
+		}
+		/**
+		*if has '_tt_layout_tabnav'
+		*container auto client height
+		*/
+		,getMainRegionHeight : function() {
+			var headH = talent.$("#header-region").outerHeight();
+			var footH = talent.$("#footer-region").outerHeight();
+			var mainH = talent.$("#main-region").outerHeight();
+			var HH = $(window).height() - headH - footH;
+			return HH;
+		}
+		,setMainRegionsHeight:function () {
+
+			var self = this;
+			
+			var main = talent.$('#main-region');
+
+			setHeight(main);
+			var resizeDelay = talent._.debounce(function(){
+				setHeight(main);
+			}, 300);
+
+			$(window).off('resize.baseMaterLayout');
+			$(window).on('resize.baseMaterLayout', resizeDelay);
+
+			function setHeight() {
+				var headH = talent.$("#header-region").outerHeight();
+				var footH = talent.$("#footer-region").outerHeight();
+				var mainH = talent.$("#main-region").outerHeight();
+				var HH = $(window).height() - headH - footH;
+				main.css({"minHeight":HH});
+			}
+		}
+		/**
+		*接ajax url
+		*例：&group_id=1&tag_type=1&tag_id=8&plan_table_id=3c788377-b9d2-45b0-a8b0-e4947a030a38&plan_item_id=295
+		*/
+		,splicingUrl:function(options,array){
+			var array = array || [];
+			var url = [];
+			if(!array.length) return options;
+			for(var i=0;i<array.length;i++){
+				url.push(array[i] + "=" + options[array[i]]);
+			}
+			return url.join('&');
+		}
+
 	};
 
 	talent.Context = talent._.extend(talent.Context, localContext);

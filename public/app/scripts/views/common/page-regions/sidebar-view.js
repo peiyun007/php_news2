@@ -11,7 +11,18 @@ define(['talent', 'templates/common'],
 	{
 		template: jst['common/page-regions/sidebar']
 		,tagName : 'ul'
-		,className : 'nav nav-list sidebar_nav'
+		,className : 'breadcrumb'
+		,initialize : function() {
+			this.model = new talent.Model({
+				user_id : talent.Context.getUserInfo().id
+			})
+		}
+		,onRender : function () {
+			var id = talent.Context.getUserInfo().id;
+			if(id == -1) {
+				this.$el.hide();
+			}
+		}
 	});
 
 });

@@ -28,6 +28,24 @@ define(['jquery'], function($) {
 		 */
 		setPageTitle: function(title) {
 			document.title = title;
-		}
+		},
+
+		parseUrl :  function ( fragmentStr ) {
+            var queryObject = {};
+            if(!fragmentStr) return queryObject;
+            var markIndex = fragmentStr.indexOf("?");
+
+            // contain query string in fragments
+            if(markIndex > -1){
+                // build query object
+                var queryString = fragmentStr.slice(markIndex+1);
+                var queryArray = queryString.split('&');
+                for (var i = 0; i < queryArray.length; i++) {
+                    var queryPair = queryArray[i].split('=');
+                    queryObject[queryPair[0]] = decodeURIComponent(queryPair[1]);
+                }
+            }
+            return queryObject; 
+        }
 	};
 });

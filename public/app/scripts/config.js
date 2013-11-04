@@ -9,9 +9,11 @@ require.config({
 		,"jquery.cookie": "vendor/components/jquery.cookie/index"
 		,"jquery.ui" : "vendor/components/jquery.ui/index"
 		,"$.validate" : 'vendor/talent/views/common/plugins/jquery.validate'
-		,"$.scroll" : 'vendor/talent/views/common/plugins/jquery.scroll'
-		,'$.flip' : 'vendor/talent/views/common/plugins/jquery.flip'
-		,'$.' : 'vendor/talent/views/common/plugins/jquery.gridster'
+		,"$.scrollable" : 'vendor/talent/views/common/plugins/jquery.scrollable'
+		,"formBuilder" : 'views/common/form-builder/form-builder'
+		,'$.paginate' : 'vendor/talent/views/common/plugins/jquery.paginate'
+		,'$.corner' : 'vendor/talent/views/common/plugins/jquery.corner'
+		,'$.roundabout-shap' : 'vendor/talent/views/common/plugins/jquery.roundabout'
 	},
 	shim: {
 		'underscore': {
@@ -26,8 +28,7 @@ require.config({
 			exports: 'Marionette'
 		}
 		, '$.validate' : ['jquery']
-		, '$.flip' : ['jquery']
-		, '$.gridster' : ['jquery']
-
+		, '$.scrollable' : ['jquery']
+		, '$.paginate' : ['jquery']
 	}
 });

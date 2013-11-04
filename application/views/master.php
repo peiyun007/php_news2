@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<title><?php echo $title; ?></title>
 	<!--RepoVersion:1018-->
+
 	<link rel="stylesheet" type="text/css" href="http://www.myweb.com/styles/css/all.css"/>
 	<!--hotfix css start-->
 	<!--hotfix css end-->
@@ -21,14 +22,19 @@
 
 	</div>
 
+	<div>
+		<span>Userid:<?php echo $user_id; ?></span>
+		<span>Userid:<?php echo $user_name; ?></span>
+	</div>
+
 
 	<script>
 
 		//BSGlobal.staticPath='public/app';
 		BSGlobal.staticPath='http://www.myweb.com';
 		BSGlobal.entryPageId = '<?php echo $pageId; ?>';
-	
-		BSGlobal.loginUserInfo = {};
+		
+		BSGlobal.loginUserInfo = {'id':<?php echo $user_id; ?> , 'name':'<?php echo $user_name; ?>'};
 
 		BSGlobal.env = 'Development';
 		BSGlobal.apiPath = 'http://webapi.bs-ux.com';

@@ -28,12 +28,7 @@ define(['underscore', 'jquery', 'marionette'],
 			if(this.hideSidebar){
 				this.SidebarViewClass = null;
 				this.sidebar.close();
-				this.ui.sidebar.removeClass('col-md-4');
-				this.ui.main.removeClass('col-md-6');
 			}else{
-				
-				this.ui.sidebar.removeClass('col-md-4').addClass('col-md-4');
-				this.ui.main.removeClass('col-md-6').addClass('col-md-6');
 
 				// IndexPageView can pass new SidebarViewClass to Layout
 				var SidebarViewClass = this.sidebarViewClass ?  this.sidebarViewClass : this.regionsClass.sidebar;
